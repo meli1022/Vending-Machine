@@ -13,7 +13,7 @@ import java.util.Map;
  * control logic.
  *
  * @author Melissa Pinto
- * @version 2021-03-19
+ * @version 2024-10-03
  */
 @SuppressWarnings("serial")
 public class VendView extends JFrame implements ActionListener {
@@ -78,6 +78,8 @@ public class VendView extends JFrame implements ActionListener {
 	private final JPanel panel_5 = new JPanel();
 	JLabel backgroundImage = new JLabel("");
 	private final JPanel panel_6 = new JPanel();
+	
+	//Money in the machine. Will get "Machine out of money - Contact Operator" if out of change
 	double change = 5.00;
 	private final JLabel lblNewLabel_2_1 = new JLabel("Change:");
 	private final JLabel changeLabel = new JLabel("");
@@ -129,85 +131,121 @@ public class VendView extends JFrame implements ActionListener {
 		buttonPanel.setBackground(new Color(255, 192, 203));
 		buttonPanel.setBounds(356, 21, 200, 103);
 		panel.add(buttonPanel);
+		numberButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton.setMargin(new Insets(2, 4, 2, 4));
 
 		//layout for item buttons
 		numberButton.addActionListener(this);
+		buttonPanel.setLayout(new GridLayout(3, 3, 0, 0));
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridy=0;
 		gbc.gridx=0;
-		buttonPanel.add(numberButton,gbc);
+		buttonPanel.add(numberButton);
+		numberButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton2.setMargin(new Insets(2, 4, 2, 4));
 
 		numberButton2.addActionListener(this);
 		GridBagConstraints gbc2 = new GridBagConstraints();
 		gbc2.fill = GridBagConstraints.HORIZONTAL;
 		gbc2.gridy=0;
 		gbc2.gridx=1;
-		buttonPanel.add(numberButton2,gbc2);
-
-		numberButton3.addActionListener(this);
-		GridBagConstraints gbc3 = new GridBagConstraints();
-		gbc3.fill = GridBagConstraints.HORIZONTAL;
-		gbc3.gridy=0;
-		gbc3.gridx=2;
-		buttonPanel.add(numberButton3,gbc3);
-
-		numberButton4.addActionListener(this);
-		GridBagConstraints gbc4 = new GridBagConstraints();
-		gbc4.fill = GridBagConstraints.HORIZONTAL;
-		gbc4.gridy=1;
-		gbc4.gridx=0;
-		buttonPanel.add(numberButton4,gbc4);
+		buttonPanel.add(numberButton2);
+		numberButton3.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton3.setMargin(new Insets(2, 4, 2, 4));
+		
+				numberButton3.addActionListener(this);
+				GridBagConstraints gbc3 = new GridBagConstraints();
+				gbc3.fill = GridBagConstraints.HORIZONTAL;
+				gbc3.gridy=0;
+				gbc3.gridx=2;
+				buttonPanel.add(numberButton3);
+		numberButton5.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton5.setMargin(new Insets(2, 4, 2, 4));
 
 		numberButton5.addActionListener(this);
+		numberButton4.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton4.setMargin(new Insets(2, 4, 2, 4));
+		
+				numberButton4.addActionListener(this);
+				GridBagConstraints gbc4 = new GridBagConstraints();
+				gbc4.fill = GridBagConstraints.HORIZONTAL;
+				gbc4.gridy=1;
+				gbc4.gridx=0;
+				buttonPanel.add(numberButton4);
 		GridBagConstraints gbc5 = new GridBagConstraints();
 		gbc5.fill = GridBagConstraints.HORIZONTAL;
 		gbc5.gridy=1;
 		gbc5.gridx=1;
-		buttonPanel.add(numberButton5,gbc5);
+		buttonPanel.add(numberButton5);
+		numberButton6.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton6.setMargin(new Insets(2, 4, 2, 4));
 
 		numberButton6.addActionListener(this);
 		GridBagConstraints gbc6 = new GridBagConstraints();
 		gbc6.fill = GridBagConstraints.HORIZONTAL;
 		gbc6.gridy=1;
 		gbc6.gridx=2;
-		buttonPanel.add(numberButton6,gbc6);
-
-		numberButton7.addActionListener(this);
-		GridBagConstraints gbc7 = new GridBagConstraints();
-		gbc7.fill = GridBagConstraints.HORIZONTAL;
-		gbc7.gridy=2;
-		gbc7.gridx=0;
-		buttonPanel.add(numberButton7,gbc7);
-
-		numberButton8.addActionListener(this);
-		GridBagConstraints gbc8 = new GridBagConstraints();
-		gbc8.fill = GridBagConstraints.HORIZONTAL;
-		gbc8.gridy=2;
-		gbc8.gridx=1;
-		buttonPanel.add(numberButton8,gbc8);
-
-		numberButton9.addActionListener(this);
+		buttonPanel.add(numberButton6);
+		numberButton7.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton7.setMargin(new Insets(2, 4, 2, 4));
+		
+				numberButton7.addActionListener(this);
+				buttonPanel.add(numberButton7);
+		numberButton8.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton8.setMargin(new Insets(2, 4, 2, 4));
+		
+				numberButton8.addActionListener(this);
+				buttonPanel.add(numberButton8);
+		numberButton9.setAlignmentX(Component.CENTER_ALIGNMENT);
+		numberButton9.setMargin(new Insets(2, 4, 2, 4));
+		
+				numberButton9.addActionListener(this);
+				buttonPanel.add(numberButton9);
+						GridBagConstraints gbc7 = new GridBagConstraints();
+						gbc7.fill = GridBagConstraints.HORIZONTAL;
+						gbc7.gridy=2;
+						gbc7.gridx=0;
+				GridBagConstraints gbc8 = new GridBagConstraints();
+				gbc8.fill = GridBagConstraints.HORIZONTAL;
+				gbc8.gridy=2;
+				gbc8.gridx=1;
 		GridBagConstraints gbc9 = new GridBagConstraints();
 		gbc9.fill = GridBagConstraints.HORIZONTAL;
 		gbc9.gridy=2;
 		gbc9.gridx=2;
-		buttonPanel.add(numberButton9,gbc9);
 
 		//panel for money buttons
 		JPanel buttonPanel_1 = new JPanel();
 		buttonPanel_1.setBackground(new Color(216, 191, 216));
 		buttonPanel_1.setBounds(356, 287, 148, 129);
 		panel.add(buttonPanel_1);
+		fiveCents.setMargin(new Insets(2, 4, 2, 4));
+		fiveCents.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		fiveCents.setPreferredSize(new Dimension(47, 25));
 
 		//action listeners for money buttons
 		fiveCents.addActionListener(this);
+		tenCents.setMargin(new Insets(2, 4, 2, 4));
+		tenCents.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		tenCents.setPreferredSize(new Dimension(47, 25));
 		tenCents.addActionListener(this);
+		twentyfiveCents.setMargin(new Insets(2, 4, 2, 4));
+		twentyfiveCents.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		twentyfiveCents.setPreferredSize(new Dimension(47, 25));
 		twentyfiveCents.addActionListener(this);
+		oneDollar.setMargin(new Insets(2, 4, 2, 4));
+		oneDollar.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		oneDollar.setPreferredSize(new Dimension(47, 25));
 		oneDollar.addActionListener(this);
+		twoDollar.setMargin(new Insets(2, 4, 2, 4));
+		twoDollar.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		twoDollar.setPreferredSize(new Dimension(47, 25));
 		twoDollar.addActionListener(this);
+		fiveDollar.setMargin(new Insets(2, 4, 2, 4));
+		fiveDollar.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		fiveDollar.setPreferredSize(new Dimension(47, 25));
 		fiveDollar.addActionListener(this);
-		tenDollar.addActionListener(this);
 
 		//add money buttons to panel
 		buttonPanel_1.add(fiveCents);
@@ -216,7 +254,11 @@ public class VendView extends JFrame implements ActionListener {
 		buttonPanel_1.add(oneDollar);
 		buttonPanel_1.add(twoDollar);
 		buttonPanel_1.add(fiveDollar);
+		tenDollar.setMargin(new Insets(2, 4, 2, 4));
+		tenDollar.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		tenDollar.setPreferredSize(new Dimension(47, 25));
 		buttonPanel_1.add(tenDollar);
+		tenDollar.addActionListener(this);
 
 		//item selection title label
 		JLabel lblNewLabel = new JLabel("Item Selection:");
@@ -249,6 +291,8 @@ public class VendView extends JFrame implements ActionListener {
 		JLabel moneyInputLabel = new JLabel("");
 		moneyInputLabel.setBounds(458, 333, 80, 14);
 		panel.add(moneyInputLabel);
+		messageLabel.setForeground(Color.RED);
+		messageLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 
 		//out of stock label
 		messageLabel.setBounds(364, 135, 422, 14);
@@ -311,15 +355,16 @@ public class VendView extends JFrame implements ActionListener {
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2.setBounds(10, 11, 53, 14);
+		lblNewLabel_2.setBounds(10, 11, 53, 23);
 		panel_2.add(lblNewLabel_2);
-		statusLabel.setBounds(65, 9, 197, 23);
+		statusLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		statusLabel.setBounds(53, 11, 205, 23);
 		panel_2.add(statusLabel);
 		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2_1.setBounds(10, 35, 53, 14);
+		lblNewLabel_2_1.setBounds(10, 35, 53, 23);
 
 		panel_2.add(lblNewLabel_2_1);
-		changeLabel.setBounds(65, 32, 197, 23);
+		changeLabel.setBounds(60, 35, 199, 23);
 
 		panel_2.add(changeLabel);
 
@@ -449,7 +494,7 @@ public class VendView extends JFrame implements ActionListener {
 		panel_7.setLayout(null);
 
 		//instructions label
-		JLabel lblNewLabel_3 = new JLabel("<-- Choose a item here");
+		JLabel lblNewLabel_3 = new JLabel("<-- Choose an item here");
 		lblNewLabel_3.setBounds(10, 11, 190, 14);
 		panel_7.add(lblNewLabel_3);
 
@@ -463,7 +508,7 @@ public class VendView extends JFrame implements ActionListener {
 		//program title label
 		JLabel lblNewLabel_3_1 = new JLabel("Vending Machine");
 		lblNewLabel_3_1.setForeground(new Color(100, 149, 237));
-		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblNewLabel_3_1.setBounds(10, 11, 190, 32);
 		panel_7_1.add(lblNewLabel_3_1);
 		messageLabel.setVisible(false);
@@ -696,26 +741,50 @@ public class VendView extends JFrame implements ActionListener {
 			moneyInputCount = moneyInputCount + 10.00;
 			moneyInput.setText(Double.toString(moneyInputCount));
 		}
+		
+		
 
 		//action for vend button
-		if (e.getSource() == vendButton) {
-			double doubMoneyInput;
-			double doubCost;
-			doubMoneyInput = Double.parseDouble(moneyInput.getText());
-			doubCost = Double.parseDouble(itemCostLabel.getText());
-			
-			if(doubMoneyInput<doubCost) {
-				statusLabel.setText("Not enough money inputed!");
-			}
-			else if(doubMoneyInput>doubCost){
-				double changeDifference;
-				changeDifference = doubMoneyInput - doubCost;
 
-				if (change-changeDifference>=0){
-					change = change - changeDifference + itemTotal;
-					changeLabel.setText("Your change is: $" + changeDifference);
-					statusLabel.setText("Vending! Enjoy your food :) ");
-					itemCostLabel.setText("");
+		if (e.getSource() == vendButton) {
+
+		    double doubMoneyInput = 0;
+		    double doubCost = Double.parseDouble(itemCostLabel.getText());
+
+		    // Check if money input is empty or invalid
+		    if (moneyInput.getText().isEmpty()) {
+		        statusLabel.setForeground(Color.RED);
+		        statusLabel.setText("Please insert money to complete transaction.");
+		        return;
+		    }
+
+		    // Try to parse the money input, and catch any exceptions for invalid input
+		    try {
+		        doubMoneyInput = Double.parseDouble(moneyInput.getText());
+		    } catch (NumberFormatException ex) {
+		        statusLabel.setForeground(Color.RED);
+		        statusLabel.setText("Invalid money input. Please enter a valid amount.");
+		        return;
+		    }
+
+		    if (doubMoneyInput <= 0) {
+		        statusLabel.setForeground(Color.RED);
+		        statusLabel.setText("Please insert money to complete transaction.");
+		        return;
+		    }
+
+		    if (doubMoneyInput < doubCost) {
+		        statusLabel.setForeground(Color.RED);
+		        statusLabel.setText("Not enough money inputted!");
+		    } else if (doubMoneyInput > doubCost) {
+		        double changeDifference = doubMoneyInput - doubCost;
+
+		        if (change - changeDifference >= 0) {
+		            change = change - changeDifference + itemTotal;
+		            changeLabel.setText("Your change is: $" + String.format("%.2f", changeDifference));
+		            statusLabel.setForeground(Color.RED);
+		            statusLabel.setText("Vending! Enjoy your food :)");
+		            itemCostLabel.setText("");
 					itemSelectionLabel.setText("");
 					itemSelectionLabel_1.setText("");
 					itemSelectionLabel_2.setText("");
@@ -728,15 +797,17 @@ public class VendView extends JFrame implements ActionListener {
 					moneyInputCount = 0;
 					moneyInput.setText("");
 					openLabel.setVisible(true);
-				}
-				else {
-					changeLabel.setText("Error-Contact Operator");
-				}
-			}
-
-			else {
-				statusLabel.setText("Vending! Enjoy your food :) ");
-				itemCostLabel.setText("");
+					// Disable all buttons except the "New Transaction" button
+			        disableAllButtonsExceptNewTransaction();
+		        } else {
+		        	statusLabel.setForeground(Color.RED);
+		        	statusLabel.setFont(new Font("Tacoma", Font.PLAIN, 9));
+		            statusLabel.setText("Machine out of money - Contact Operator");
+		        }
+		    } else {
+		    	statusLabel.setForeground(Color.RED);
+		        statusLabel.setText("Vending! Enjoy your food :)");
+		        itemCostLabel.setText("");
 				itemSelectionLabel.setText("");
 				itemSelectionLabel_1.setText("");
 				itemSelectionLabel_2.setText("");
@@ -750,11 +821,16 @@ public class VendView extends JFrame implements ActionListener {
 				moneyInputCount = 0;
 				moneyInput.setText("");
 				openLabel.setVisible(true);
-			}
+				// Disable all buttons except the "New Transaction" button
+		        disableAllButtonsExceptNewTransaction();
+		    }
 		}
+
 		if (e.getSource() == btnNewTransaction){
+			enableAllButtonsExceptNewTransaction();
 			changeLabel.setText("");
 			statusLabel.setText("");
+			statusLabel.setForeground(Color.black);
 			itemTotal = 0;
 			openLabel.setVisible(false);
 		}
@@ -766,7 +842,60 @@ public class VendView extends JFrame implements ActionListener {
 		messageLabel.setVisible(true);
 		messageLabel.setText(" " + item + messageLabel.getText());
 
-
+		
 
 	}
+	
+	// Helper method to disable all buttons except the "New Transaction" button
+	private void disableAllButtonsExceptNewTransaction() {
+	    numberButton.setEnabled(false);
+	    numberButton2.setEnabled(false);
+	    numberButton3.setEnabled(false);
+	    numberButton4.setEnabled(false);
+	    numberButton5.setEnabled(false);
+	    numberButton6.setEnabled(false);
+	    numberButton7.setEnabled(false);
+	    numberButton8.setEnabled(false);
+	    numberButton9.setEnabled(false);
+
+	    fiveCents.setEnabled(false);
+	    tenCents.setEnabled(false);
+	    twentyfiveCents.setEnabled(false);
+	    oneDollar.setEnabled(false);
+	    twoDollar.setEnabled(false);
+	    fiveDollar.setEnabled(false);
+	    tenDollar.setEnabled(false);
+	    
+	    btnCancelSelection.setEnabled(false);
+	    vendButton.setEnabled(false);
+
+	    // Keep only the New Transaction button enabled
+	    btnNewTransaction.setEnabled(true);
+	}
+	
+	// Helper method to disable all buttons except the "New Transaction" button
+		private void enableAllButtonsExceptNewTransaction() {
+		    numberButton.setEnabled(true);
+		    numberButton2.setEnabled(true);
+		    numberButton3.setEnabled(true);
+		    numberButton4.setEnabled(true);
+		    numberButton5.setEnabled(true);
+		    numberButton6.setEnabled(true);
+		    numberButton7.setEnabled(true);
+		    numberButton8.setEnabled(true);
+		    numberButton9.setEnabled(true);
+
+		    fiveCents.setEnabled(true);
+		    tenCents.setEnabled(true);
+		    twentyfiveCents.setEnabled(true);
+		    oneDollar.setEnabled(true);
+		    twoDollar.setEnabled(true);
+		    fiveDollar.setEnabled(true);
+		    tenDollar.setEnabled(true);
+		    
+		    btnCancelSelection.setEnabled(true);
+		    vendButton.setEnabled(true);
+
+		}
+
 }
